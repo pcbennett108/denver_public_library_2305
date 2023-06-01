@@ -62,6 +62,9 @@ RSpec.describe Library do
       expect(dpl.checkout(mockingbird)).to be(false)
       expect(dpl.checked_out_books).to eq([mockingbird, jane_eyre, villette])
       
+      dpl.return(mockingbird)
+      dpl.return(villette)
+      expect(dpl.checked_out_books).to eq([jane_eyre])
 
     end
 
