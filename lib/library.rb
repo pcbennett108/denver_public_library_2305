@@ -11,8 +11,11 @@ class Library
 
   def add_author(author)
     @authors << author
+    books
   end
 
+  # Put book-fetching code in books method so that
+  # books written AFTER author added will also get added.
   def books
     @authors.each do |author|
       author.books.each do |book|

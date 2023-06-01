@@ -7,7 +7,7 @@ RSpec.describe Library do
     it "exists and has attributes" do
       dpl = Library.new("Denver Public Library")
 
-      expect(dpl).to be_a Library
+      expect(dpl).to be_an_instance_of(Library)
       expect(dpl.name).to eq("Denver Public Library")
       expect(dpl.books).to eq([])
       expect(dpl.authors).to eq([])
@@ -25,8 +25,10 @@ RSpec.describe Library do
       dpl.add_author(charlotte_bronte)
       dpl.add_author(harper_lee)
 
+      watchman = harper_lee.write("Go Set a Watchman", "July 14, 2015")
+
       expect(dpl.authors).to eq([charlotte_bronte, harper_lee])
-      expect(dpl.books).to eq([jane_eyre, professor, villette, mockingbird])
+      expect(dpl.books).to eq([jane_eyre, professor, villette, mockingbird, watchman])
 
     end
 

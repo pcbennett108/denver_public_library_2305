@@ -7,7 +7,7 @@ RSpec.describe Author do
     it "exists and has attributes" do
       charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
 
-      expect(charlotte_bronte).to be_a Author
+      expect(charlotte_bronte).to be_an_instance_of(Author) 
       expect(charlotte_bronte.name).to eq("Charlotte Bronte")
       expect(charlotte_bronte.books).to eq([])
     end
@@ -18,8 +18,10 @@ RSpec.describe Author do
 
       expect(jane_eyre.class).to eq(Book)
       expect(jane_eyre.title).to eq("Jane Eyre")
+      expect(jane_eyre.publication_year).to eq("1847")
       
       villette = charlotte_bronte.write("Villette", "1853")
+      expect(villette.title).to eq("Villette")
       expect(charlotte_bronte.books).to eq([jane_eyre, villette])
     end
 
