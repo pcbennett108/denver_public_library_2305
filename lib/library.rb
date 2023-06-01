@@ -49,6 +49,14 @@ class Library
   def return(book)
     @checked_out_books.delete(book)
   end
+
+  def inventory
+    result = {}
+    @authors.each do |author|
+      result[author] = author.books
+    end
+    result
+  end
 end
 
 
@@ -66,4 +74,3 @@ dpl.add_author(harper_lee)
 
 watchman = harper_lee.write("Go Set a Watchman", "July 14, 2015")
 
-p dpl.publication_time_frame(harper_lee)
