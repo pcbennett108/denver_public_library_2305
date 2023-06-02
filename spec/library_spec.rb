@@ -71,7 +71,25 @@ RSpec.describe Library do
       expect(@dpl.inventory).to eq({@charlotte_bronte => [@jane_eyre, @professor, @villette], @harper_lee => [@mockingbird, watchman]})
     end
 
-    
+    it "can list a full inventory of the library" do
+      @dpl.add_author(@charlotte_bronte)
+      @dpl.add_author(@harper_lee)
+
+      watchman = @harper_lee.write("Go Set a Watchman", "July 14, 2015")
+
+      @dpl.checkout(@jane_eyre)
+      @dpl.checkout(@villette)
+      @dpl.checkout(@mockingbird)
+      @dpl.checkout(watchman)
+      @dpl.return(@mockingbird)
+      @dpl.return(@villette)
+      @dpl.checkout(@villette)
+      @dpl.checkout(@mockingbird)
+      @dpl.return(@villette)
+      @dpl.checkout(@villette)
+
+      expect(@dpl.most_popular_book).to eq(@villette)
+    end
   end
 
 end
